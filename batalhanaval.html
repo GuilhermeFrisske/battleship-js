@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batalha Naval</title>
+    <link rel="stylesheet" href="batalhanaval.css">
+    <script>
+        let matriz = [
+        ["1", "b", "1", "b", "1", "b", "b", "o", "2", "1"],
+        ["1", "o", "o", "o", "o", "3", "o", "o", "b", "o"],
+        ["o", "o", "o", "b", "1", "3", "b", "o", "2", "o"],
+        ["1", "o", "o", "2", "b", "2", "b", "2", "b", "2"],
+        ["o", "b", "o", "o", "3", "o", "o", "o", "o", "o"],
+        ["1", "b", "3", "o", "o", "b", "o", "b", "1", "2"],
+        ["1", "b", "b", "b", "o", "o", "1", "b", "o", "2"],
+        ["b", "o", "o", "o", "b", "2", "b", "b", "o", "o"],
+        ["o", "o", "2", "o", "2", "b", "2", "1", "b", "o"],
+        ["1", "o", "1", "o", "b", "o", "b", "o", "o", "o"],
+    ]
+
+
+        const imagens = {
+            "1": "ship1.png",
+            "2": "ship2.png",
+            "3": "ship3.png",
+            "o": "onda.png",
+            "b": "bomba.png"
+        };
+
+        let vidas = 5;
+        let pontos = 0;
+
+        function atirar(x, y) {
+            let cordenada = x + "" + y;
+            let imagem = document.getElementById(cordenada);
+            imagem.src = imagens[matriz[x][y]];
+            imagem.onclick = null;
+
+            if (matriz[x][y] == "b") {
+                vidas -= 1;
+                let trocaVida = document.getElementById("vidas");
+                trocaVida.innerHTML = vidas;
+                if (vidas == 0) {
+                    alert("Lose");
+                    location.reload();
+                }
+            }
+            if (matriz[x][y] == "1") {
+                pontos += 10;
+                let pontosGanhos = document.getElementById("pontos");
+                pontosGanhos.innerHTML = pontos;
+            }
+            if (matriz[x][y] == "2") {
+                pontos += 20;
+                let pontosGanhos = document.getElementById("pontos");
+                pontosGanhos.innerHTML = pontos;
+            }
+            if (matriz[x][y] == "3") {
+                pontos += 30;
+                let pontosGanhos = document.getElementById("pontos");
+                pontosGanhos.innerHTML = pontos;
+            }
+        }
+
+        document.write("<table>");
+        for (l = 0; l < 10; l++) {
+            document.write("<tr>");
+            for (c = 0; c < 10; c++) {
+                document.write("<td><img id='" + l + c + "' onclick='atirar(" + l + "," + c + ")' src='Fire-icon.png'></td>");
+            }
+            document.write("</tr>");
+        }
+        document.write("</table>");
+    </script>
+</head>
+<body>
+    <label>
+        <div class="layoutvida">
+            <h2>Total de vidas: <span id="vidas">5</span></h2>
+            <h2>Pontos: <span id="pontos">0</span></h2>
+        </div>
+    </label>
+</body>
+</html>

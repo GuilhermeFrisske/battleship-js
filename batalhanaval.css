@@ -1,0 +1,99 @@
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #e0f7fa; /* Fundo azul claro */
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  color: #004d40;
+}
+
+.layoutvida {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-bottom: 25px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.layoutvida h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: #00796b;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 121, 107, 0.4);
+  user-select: none;
+}
+
+.layoutvida span {
+  margin-left: 8px;
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+
+table {
+  border-collapse: collapse;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+
+td {
+  border: 2px solid #004d40;
+  padding: 0;
+  width: 50px;
+  height: 50px;
+}
+
+td img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+  user-select: none;
+}
+
+td img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px #00796b;
+}
+
+
+td img[onclick="null"] {
+  cursor: default;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+
+@media (max-width: 600px) {
+  table {
+    width: 100%;
+  }
+  td {
+    width: 35px;
+    height: 35px;
+  }
+  .layoutvida {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .layoutvida h2 {
+    font-size: 1.4rem;
+    padding: 10px 20px;
+  }
+  .layoutvida span {
+    font-size: 1.6rem;
+  }
+}
